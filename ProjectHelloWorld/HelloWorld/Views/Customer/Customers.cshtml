@@ -1,0 +1,44 @@
+﻿@model HelloWorld.Models.Customer
+
+@{
+    ViewBag.Title = "Customers";
+}
+
+<h2>Customers</h2><br</>
+
+@ViewData["CustName"]
+
+<div>
+    @Model.CustName  <br/>
+    @Model.CustId
+</div>
+
+<div>
+    @*<form action="Submit" method="post" >
+        <input type="text" name="txtCustName" value="" id="text1" /><br/><br/>
+
+        <input type="text" name="txtCustId" value="" id =" text1" /><br/><br/>
+        
+        <input type="submit" value="submit"  />
+
+    </form>*@
+    @using (Html.BeginForm("Submit","Customer",FormMethod.Post))
+    {
+        <i>Customer Name</i> @Html.TextBoxFor( m => m.CustName) <br />
+        @Html.ValidationMessageFor(x => x.CustName)<br />
+        <i> Customer Code </i> @Html.TextBoxFor(m => m.CustId)<br />
+        @Html.ValidationMessageFor(x => x.CustId)<br />
+        <input id="Submit1" type="submit" value="submit" />
+    }
+    
+    
+    
+
+    
+    <h4>Filled Form</h4>
+    
+    <p>Name: :@ViewData["C1"]</p>
+    <p>Id: :@ViewData["C2"]</p>
+    <br/>
+    <p  style="color:red">@ViewData["SUC"] </p>
+</div>

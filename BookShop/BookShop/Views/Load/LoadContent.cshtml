@@ -1,0 +1,72 @@
+﻿
+@model BookShop.ViewModel.BooksAuthorVM
+@using BookShop.Models
+
+@{
+    ViewBag.Title = "LoadContent";
+}
+<style>
+    tr {
+        background-color: darkgrey;
+    }
+    td {
+        text-align: center;
+        width: 150px;
+        border: 1px solid black;
+    }
+</style>
+<h2>LoadContent</h2>
+
+<div>
+    Name :@Model.customer.CustName
+</div>
+<div>
+    Mobile :@Model.customer.CustMobile
+</div>
+<div>
+    Id :@Model.customer.CustId
+</div>
+@*<div>
+    Book Name: @Model.book.BookName
+</div>
+<div>
+    Book Id : @Model.book.BookId
+</div>
+<div>
+    Book Author : @Model.book.Author
+</div>*@
+
+<div>
+    @using (Html.BeginForm("Submit", "Load", FormMethod.Post))
+    {
+        <i>Customer Name</i> @Html.TextBoxFor(m => m.customer.CustName) <br /> <br />
+        @Html.ValidationMessageFor(x => x.customer.CustName)<br />
+        <i>Customer Mobile</i> @Html.TextBoxFor(m => m.customer.CustMobile) <br /> <br />
+        @Html.ValidationMessageFor(x => x.customer.CustMobile)<br />
+        <i>Customer Id</i> @Html.TextBoxFor(m => m.customer.CustId)<br /> <br />
+        @Html.ValidationMessageFor(x => x.customer.CustId)<br />
+        <input type="submit" id="submit1" value="submit" />
+    }
+
+</div>
+
+
+<div>
+    <table>
+        <tr>
+            <td>Name</td>
+            <td>Mobile</td>
+            <td>Id</td>
+        </tr>
+        @Model.MyListOfsustomers.Count
+        @foreach (var item in Model.MyListOfsustomers)
+        {
+                        <tr>
+                            <td> @item.CustName</td>
+                            <td> @item.CustMobile</td>
+                            <td> @item.CustId</td>
+                        </tr>
+         }
+
+    </table>
+</div>

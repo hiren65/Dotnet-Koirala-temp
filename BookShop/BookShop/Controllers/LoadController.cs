@@ -31,6 +31,15 @@ namespace BookShop.Controllers
             baVm.customer = customer;
             baVm.book = book;
 
+
+            CustomerDal dal1 = new CustomerDal();
+
+            List<Customer> listCust = dal1.Customers.ToList<Customer>();
+
+
+
+            baVm.MyListOfsustomers = listCust;
+
             return View("LoadContent", baVm);
         }
   
